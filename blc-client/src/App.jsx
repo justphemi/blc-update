@@ -23,7 +23,7 @@ const App = () => {
   return (
     <div className='bg-red px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
       <ToastContainer />
-      <div className='sticky border-none top-0 z-999 bg-white'>
+      <div className='sticky border-none top-0 bg-white'>
         <Navbar />
       </div>
       <SearchBar />

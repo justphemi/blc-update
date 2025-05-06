@@ -9,7 +9,7 @@ const Navbar = () => {
   const {showSearch, setShowSearch, getCartCount} = useContext(ShopContext)
 
   return (
-    <div className='flex border-none items-center justify-between z-999 py-5 font-medium'>
+    <div className='flex border-none items-center justify-between py-5 font-medium bg-white sticky top-0'>
       <Link to='/'>
         <img src={assets.logo} className='w-36' alt='Boncharly Les Creazions' />
       </Link>
@@ -59,9 +59,8 @@ const Navbar = () => {
         </Link>
         <img onClick={() => setVisibleMenu(true)} src={assets.menu_icon} className='w-5 cursor-pointer sm:hidden' alt='menu icon' />
       </div>
-
-      <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${visibleMenu ? 'w-full' : 'w-0'}`}>
-        <div className='flex flex-col text-gray-600'>
+      <div className={`fixed top-0 right-0 h-full w-full bg-white z-50 transform transition-transform duration-300 ease-in-out ${visibleMenu ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className='flex flex-col text-gray-600 h-full'>
           <div onClick={() => setVisibleMenu(false)} className='flex items-center cursor-pointer gap-4 p-3'>
             <img src={assets.dropdown_icon} alt='dropdown menu' className='h-4 rotate-180' />
             <p>Back</p>
@@ -73,6 +72,8 @@ const Navbar = () => {
           <NavLink className='py-2 pl-6 hover:text-[#ff9900]' onClick={() => setVisibleMenu(false)} to='/contact'>Contact</NavLink>
         </div>
       </div>
+
+
     </div>
   )
 }
