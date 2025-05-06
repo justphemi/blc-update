@@ -8,7 +8,7 @@ import Cart from './pages/Cart'
 import Auth from './pages/Auth'
 import Checkout from './pages/Checkout'
 import Orders from './pages/Orders'
-import Team from './pages/team' 
+import Team from './pages/Team' 
 
 import {Route, Routes} from 'react-router-dom'
 import Navbar from './components/Navbar'
