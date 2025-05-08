@@ -10,6 +10,7 @@ const Product = () => {
   const [productData, setProductData] = useState(false)
   const [image, setImage] = useState('')
   const [size, setSize] = useState('')
+  const [ quantity,setQuantity] = useState(0)
 
   // const fetchProduct = async () => {
   //   products.map((t) => {
@@ -64,7 +65,7 @@ const Product = () => {
           </div>
           <p className='mt-5 text-3xl font-medium'> <strong>{currency}</strong> {productData.price.toLocaleString()}</p>
           <p className='mt-5 text-gray-500 md:w-4/5'>{productData.description}</p>
-          <div className='flex flex-col gap-4 my-8'>
+          {/* <div className='flex flex-col gap-4 my-8'>
             <p>Select size</p>
             <div className='flex gap-2'>
               {productData.sizes.map((i, index) => (
@@ -73,6 +74,40 @@ const Product = () => {
             </div>
           </div>
           <button onClick={() => addToCart(productData._id, size)} className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700 cursor-pointer'>ADD TO CART</button>
+           */}
+
+          <div className="flex flex-col gap-4 my-8">
+              <p>Select size</p>
+              <div className="flex gap-2">
+                  {productData.sizes.map((i, index) => (
+                      <button 
+                          onClick={() => setSize(i)} 
+                          key={index} 
+                          className={`border cursor-pointer border-gray-200 py-2 px-4 bg-gray-100 ${i === size ? 'border-orange-500' : ''}`}
+                      >
+                          {i}
+                      </button>
+                  ))}
+              </div>
+          </div>
+
+          <div className="flex gap-4">
+              <input 
+                  type="number" 
+                  min="1" 
+                  defaultValue="1" 
+                  onChange={(e) => setQuantity(Number(e.target.value))}
+                  className="border border-gray-300 sm:w-2/4 p-2"
+              />
+              <button 
+                  onClick={() => addToCart(productData._id, size, quantity)} 
+                  className="bg-black text-white px-8 py-3 sm:w-2/4 text-sm active:bg-gray-700 cursor-pointer"
+              >
+                  ADD TO CART
+              </button>
+          </div>
+
+
           <hr className='mt-8 sm:w-4/5 border-gray-300 bg-gray-200'/>
           <div className='text-sm text-gray-500 mt-5 flex flex-col gap-1'>
             <p>Return available within 14 days</p>

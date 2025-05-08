@@ -55,7 +55,17 @@ const Cart = () => {
                     </div>
                   </div>
                 </div>
-                <input onChange={(e) => e.target.value === '' || e.target.value === '0' ? null : updateCart(i._id, i.size, Number(e.target.value))} type="number" min={1} defaultValue={i.quantity} className='border-[0.1rem] max-w-10 sm:max-w-20 px-1 sm:px-2 py-1' />
+                {/* <input onChange={(e) => e.target.value === '' || e.target.value === '0' ? null : updateCart(i._id, i.size, Number(e.target.value))} type="number" min={1} defaultValue={i.quantity} className='border-[0.1rem] max-w-10 sm:max-w-20 px-1 sm:px-2 py-1' /> */}
+                <input 
+                  onChange={(e) => {
+                      const qty = Number(e.target.value)
+                      if (qty > 0) updateCart(i._id, i.size, qty)
+                  }} 
+                  type="number" 
+                  min={1} 
+                  value={i.quantity} 
+                  className='border-[0.1rem] max-w-10 sm:max-w-20 px-1 sm:px-2 py-1' 
+              />
                 <img onClick={() => updateCart(i._id, i.size, 0)} src={assets.bin_icon} className='w-4 mr-4 sm:w-5 cursor-pointer' alt='remove_item' />
               </div>
             )

@@ -53,7 +53,7 @@ const Checkout = () => {
           </div>
         </div>
         <div className='w-full text-end mt-8'>
-          <button onClick={() => navigate('/my-orders')} className='bg-black text-white px-12 cursor-pointer py-3 text-sm'>PLACE ORDER</button>
+          <button onClick={() => navigate('/me/my-orders')} className='bg-black text-white px-12 cursor-pointer py-3 text-sm'>PLACE ORDER</button>
         </div>
       </div>    
     </div>

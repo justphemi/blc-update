@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { createContext } from "react";
-import { products } from "../assets/assets";
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { createContext } from "react"
+import { products } from "../assets/assets"
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 export const ShopContext = createContext()
 
@@ -15,29 +15,31 @@ const ShopContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({})
     const navigate = useNavigate()
 
-    const addToCart = async (iId, size) => {
-        if(!size){
+    const addToCart = async (iId, size, quantity = 1) => {
+        if (!size) {
             toast.error('Select a product size')
             return
         }
-
+    
         let cartData = structuredClone(cartItems)
-
-        if(cartData[iId]){
-            if(cartData[iId][size]){
-                cartData[iId][size] += 1
-            }
-        }else {
+    
+        if (!cartData[iId]) {
             cartData[iId] = {}
-            cartData[iId][size] = 1
         }
-
+    
+        if (cartData[iId][size]) {
+            cartData[iId][size] += quantity
+        } else {
+            cartData[iId][size] = quantity
+        }
+    
         setCartItems(cartData)
         toast.success('Added to cart')
     }
+    
 
     const getCartCount = () => {
-        let total= 0;
+        let total= 0
 
         for(const i in cartItems){
             for(const j in cartItems[i]){
