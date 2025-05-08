@@ -19,7 +19,7 @@ const ProductItem = ({ id, image, name, price, sizes }) => {
                 </Link>
             </div>
 
-          <div className='w-full flex items-center justify-between p-1'>
+          <div className='w-full flex flex-col p-1'>
             <Link to={`/collection/product/${id}`}>
               <p className="font-medium text-sm"><strong>{currency} {price.toLocaleString()}</strong></p>
             </Link>
